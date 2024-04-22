@@ -4,13 +4,13 @@
     </button>
     <span>My App</span>
     <span class="example-spacer"></span>
-    <button mat-button class="example-icon favorite-icon">
+    <button mat-stroked-button class="example-icon favorite-icon" (click)="gotoUsers()">
       User
     </button>
-    <button mat-button>
+    <button mat-stroked-button (click)="gotoItems()">
       Item
     </button>
-    <button mat-button>
+    <button mat-stroked-button>
       Cart  
     </button>
   </mat-toolbar>

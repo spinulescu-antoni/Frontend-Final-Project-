@@ -11,7 +11,10 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class ItemCardComponent {
 
-@Input()
-title: string= "Shiba Inu";
+  @Input() name: string = "";
+  @Input() description: string = "";
+  @Input() price: number = 0;
+  @Input() quantity: number = 0;
+  @Input() url: string = "";
 
 }

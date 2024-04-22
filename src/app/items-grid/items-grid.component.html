@@ -3,20 +3,17 @@ class="grid-list"
 [cols]="breakpoint" 
 rowHeight="600" 
  (window:resize)="onResize($event)">
-    <!-- <mat-grid-tile>Item-2</mat-grid-tile>
-    <mat-grid-tile>Item-3</mat-grid-tile>
-    <mat-grid-tile>Item-4</mat-grid-tile>
-    <mat-grid-tile>Item-5</mat-grid-tile>
-    <mat-grid-tile>Item-6</mat-grid-tile>
-    <mat-grid-tile>Item-7</mat-grid-tile>
-    <mat-grid-tile>Item-8</mat-grid-tile>
-    <mat-grid-tile>Item-9</mat-grid-tile>
-    <mat-grid-tile>Item-10</mat-grid-tile>
-    <mat-grid-tile>Item-11</mat-grid-tile>
-    <mat-grid-tile>Item-12</mat-grid-tile>
-    <mat-grid-tile>Item-13</mat-grid-tile>
-    <mat-grid-tile>Item-14</mat-grid-tile> -->
 
-        
-    <mat-grid-tile *ngFor="let item of dogs; let i = index"><app-item-card [title]="item"></app-item-card></mat-grid-tile>
+    @for (item of items; track item; let i = $index) {
+  <mat-grid-tile>
+    <app-item-card 
+      [name]="item.name" 
+      [description]="item.description" 
+      [price]="item.price" 
+      [quantity]="item.quantity" 
+      [url]="item.url">
+    </app-item-card>
+  </mat-grid-tile>
+  }
 </mat-grid-list>
+  <!-- *ngFor="let item of dogs; let i = index" -->
