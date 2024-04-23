@@ -22,5 +22,8 @@ export class NavbarComponent {
   gotoItems() {
     this.router.navigate(['items']);
   }
+  gotoCreateItem(){
+    this.router.navigate(['create-item'])
+  }
 
 }
