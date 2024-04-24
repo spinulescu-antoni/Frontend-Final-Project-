@@ -27,6 +27,13 @@ export class ItemsService {
   public saveItem(item: Item){
     return this.http.post<Item>(this.url, item)
   }
+  public getItemById(id: number){
+    return this.http.get<Item>(this.url + "/" + id)
+  }
+
+  public updateItem(id: Number, item: Item) {
+    return this.http.put<Item>(this.url+ "/"+ id, item)
+  }
 
   // public get2() {
   //   return 2; //instant operation
