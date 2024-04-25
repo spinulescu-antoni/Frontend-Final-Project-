@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import User from './types/User';
+import LoginRequest from './types/LoginRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +21,11 @@ export class UsersService {
     let textid = id.toString();
     return this.http.delete<User>(this.url + "/" + textid);
   }
+
+  public loginUser(loginRequest: LoginRequest){
+    return this.http.post<LoginRequest>(this.url + "/login" ,loginRequest);
+    
+  }
+  
+
 }

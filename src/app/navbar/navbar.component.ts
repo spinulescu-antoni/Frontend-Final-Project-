@@ -25,5 +25,8 @@ export class NavbarComponent {
   gotoCreateItem(){
     this.router.navigate(['create-item'])
   }
+    goToLogin(){
+      this.router.navigate(['login']);
+    }
+  }
 
-}

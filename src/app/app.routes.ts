@@ -3,6 +3,7 @@ import { ItemsGridComponent } from './items-grid/items-grid.component';
 import { UsersComponent } from './users/users.component';
 import { AdditemComponent } from './additem/additem.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { FormLoginComponent } from './form-login/form-login.component';
 
 export const routes: Routes = [
     {
@@ -21,5 +22,9 @@ export const routes: Routes = [
     {
         path: 'items/:id',
         component: ItemDetailsComponent
+    },
+    {
+        path: 'login',
+        component: FormLoginComponent
     }
 ];

@@ -8,6 +8,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -33,14 +35,18 @@ export class UsersComponent implements OnInit {
   public deleteUser(id: number) {
     // console.log(id);
     this.usersService.deleteUser(id).subscribe((data) => {
+      this.openSnackBar("User was deleted");
       this.usersService.getUsers().subscribe((data) => {
         this.users = data;
         this.dataSource = data;
       })
+    }, (err) =>{
+      console.log('Error'); 
+      this.openSnackBar("Can not delete user")
     });
   }
   
-  constructor(private usersService: UsersService, public dialog: MatDialog){}
+  constructor(private _snackBar: MatSnackBar, private usersService: UsersService, public dialog: MatDialog){}
 
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, id:number): void {
@@ -63,5 +69,14 @@ export class UsersComponent implements OnInit {
       }
     });
   }
+
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 5 * 1000,
+      data: message,
+      horizontalPosition:'right', 
+      verticalPosition:'top'
+    });
+}
 
 }

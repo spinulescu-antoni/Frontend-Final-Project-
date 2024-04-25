@@ -6,11 +6,14 @@ import {MatListModule} from '@angular/material/list';
 import Item from '../types/Item';
 import { UpdateItemDialogComponent } from '../update-item-dialog/update-item-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-item-details',
   standalone: true,
-  imports: [MatListModule],
+  imports: [MatListModule, MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './item-details.component.html',
   styleUrl: './item-details.component.css'
 })
@@ -22,6 +25,9 @@ export class ItemDetailsComponent implements OnInit {
   constructor(private service: ItemsService, private route: ActivatedRoute, private dialog: MatDialog){
     
   }
+
+
+
   ngOnInit(): void {
     this.getItemById();
   }
@@ -38,9 +44,12 @@ export class ItemDetailsComponent implements OnInit {
         data: this.item
       });
   
-      // dialogRef.afterClosed().subscribe(result => {
-      //   // this.service.updateItem()
-      // });
+      dialogRef.afterClosed().subscribe(data => {
+        this.service.getItemById(this.itemId).subscribe((result) => {
+          console.log(result);
+          this.item = result;
+        })
+      });
     }
   }
 
