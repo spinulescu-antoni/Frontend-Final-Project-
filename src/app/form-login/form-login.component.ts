@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { UsersService } from '../users.service';
+import LoginRequest from '../types/LoginRequest';
 
 @Component({
   selector: 'app-form-login',
@@ -26,7 +27,7 @@ export class FormLoginComponent {
   public onLogin(){
     console.log(this.user.value);
     this.usersService.loginUser(this.user.value).subscribe((data) => {
-      console.log(data);
+      console.log();
     })
   }
 }

@@ -1,6 +1,7 @@
+
 class LoginRequest{
-    private userEmail: string;
-    private password: string;
+    public userEmail: string;
+    public password: string;
 
 
     constructor(userEmail: string, password: string){
